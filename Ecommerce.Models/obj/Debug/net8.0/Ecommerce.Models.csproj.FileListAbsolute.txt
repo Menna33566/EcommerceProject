@@ -1,0 +1,11 @@
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\bin\Debug\net8.0\Ecommerce.Models.deps.json
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\bin\Debug\net8.0\Ecommerce.Models.dll
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\bin\Debug\net8.0\Ecommerce.Models.pdb
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\Ecommerce.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\Ecommerce.Models.AssemblyInfoInputs.cache
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\Ecommerce.Models.AssemblyInfo.cs
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\Ecommerce.Models.csproj.CoreCompileInputs.cache
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\Ecommerce.Models.dll
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\refint\Ecommerce.Models.dll
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\Ecommerce.Models.pdb
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Models\obj\Debug\net8.0\ref\Ecommerce.Models.dll
