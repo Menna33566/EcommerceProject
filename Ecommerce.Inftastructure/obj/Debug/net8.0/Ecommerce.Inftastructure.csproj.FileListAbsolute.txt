@@ -19,3 +19,4 @@ D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Inftastructure\obj\Debug\net
 D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Inftastructure\obj\Debug\net8.0\refint\Ecommerce.Inftastructure.dll
 D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Inftastructure\obj\Debug\net8.0\Ecommerce.Inftastructure.pdb
 D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Inftastructure\obj\Debug\net8.0\ref\Ecommerce.Inftastructure.dll
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Inftastructure\obj\Debug\net8.0\Ecommerce.Inftastructure.sourcelink.json

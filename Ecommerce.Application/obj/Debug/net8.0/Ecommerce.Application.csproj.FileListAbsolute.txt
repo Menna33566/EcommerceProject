@@ -15,3 +15,4 @@ D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Application\obj\Debug\net8.0
 D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Application\obj\Debug\net8.0\refint\Ecommerce.Application.dll
 D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Application\obj\Debug\net8.0\Ecommerce.Application.pdb
 D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Application\obj\Debug\net8.0\ref\Ecommerce.Application.dll
+D:\ITI\ITI_.Net\VS-C#\Ecommerce_ProjectCS\Ecommerce.Application\obj\Debug\net8.0\Ecommerce.Application.sourcelink.json
