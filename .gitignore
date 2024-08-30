@@ -1,6 +1,9 @@
-/.vs 
-**/Migrations/**
+/.vs
+App.config
+**/Migrations/
 *.dll
 *.pdb
 *.cache
 *.json
+bin/
+obj/
