@@ -48,8 +48,8 @@ namespace Ecommerce.PresentationV2
                 else if (type == 2)
                 {
                     this.Hide();
-                    //ShowProduct customer = new ShowProduct();
-                    //customer.Show();
+                    ShowProduct customer = new ShowProduct();
+                    customer.Show();
                 }
             }
             else

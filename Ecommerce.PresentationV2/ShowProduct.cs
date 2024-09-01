@@ -43,7 +43,7 @@ namespace Ecommerce.PresentationV2
 
         private void ShowProduct_Load(object sender, EventArgs e)
         {
-            var container = AutoFac.Inject();
+            var container = AutoFac.AutoFac.Inject();
             IProductService productService = container.Resolve<IProductService>();
             BindingList<GetAllProductDTO> products = new BindingList<GetAllProductDTO>(productService.GetAllProudctPagination(4, 1));
             dataGridView1.DataSource = products;
@@ -99,7 +99,7 @@ namespace Ecommerce.PresentationV2
 
             dataGridView1.Columns.Add(ProductDetails);
 
-            var container2 = AutoFac.Inject();
+            var container2 = AutoFac.AutoFac.Inject();
             ICategoryService categoryService = container2.Resolve<ICategoryService>();
             var Categs = categoryService.GetAllCategory().Select(p => p.CategoryName).ToList();
             comboBoxCategory.DataSource = Categs;
@@ -139,7 +139,7 @@ namespace Ecommerce.PresentationV2
         private void Nextbtn_Click(object sender, EventArgs e)
         {
             num++;
-            var container = AutoFac.Inject();
+            var container = AutoFac.AutoFac.Inject();
             IProductService productService = container.Resolve<IProductService>();
             BindingList<GetAllProductDTO> products = new BindingList<GetAllProductDTO>(productService.GetAllProudctPagination(4, num));
 
@@ -165,7 +165,7 @@ namespace Ecommerce.PresentationV2
             if (num > 1)
             {
                 num--;
-                var container = AutoFac.Inject();
+                var container = AutoFac.AutoFac.Inject();
                 IProductService productService = container.Resolve<IProductService>();
                 BindingList<GetAllProductDTO> products = new BindingList<GetAllProductDTO>(productService.GetAllProudctPagination(4, num));
 
@@ -191,7 +191,7 @@ namespace Ecommerce.PresentationV2
         {
             string SearchName = comboBoxCategory.Text;
 
-            var container = AutoFac.Inject();
+            var container = AutoFac.AutoFac.Inject();
             IProductService productService = container.Resolve<IProductService>();
             BindingList<GetAllProductDTO> products = new BindingList<GetAllProductDTO>(productService.SearchProduct(SearchName, num, num));
 
@@ -220,7 +220,7 @@ namespace Ecommerce.PresentationV2
 
             if (selectedProduct != null)
             {
-                var container = AutoFac.Inject();
+                var container = AutoFac.AutoFac.Inject();
                 IProductService productService = container.Resolve<IProductService>();
               //  GetAllProductDTO productDetails = productService.GetProductDetails(selectedProduct);
                 //prd = new Product();

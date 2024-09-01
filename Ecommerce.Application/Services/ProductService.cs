@@ -127,5 +127,9 @@ namespace Ecommerce.Application.Services
             return productRepository.GetAllLocal();
         }
 
+        public List<GetAllProductDTO> SearchProduct(string productname)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
