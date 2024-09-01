@@ -39,7 +39,7 @@ namespace Ecommerce.PresentationV2
             var userService = new UserService(userRepository, mapper);
 
             // Pass the services to OrderForm
-            var orderForm = new orderForm(orderService, userService);
+           // var orderForm = new orderForm(orderService, userService);
 
             // Run the OrderForm
             System.Windows.Forms.Application.Run(orderForm);
