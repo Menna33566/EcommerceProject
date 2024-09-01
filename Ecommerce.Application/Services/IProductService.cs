@@ -1,4 +1,5 @@
 ﻿using Ecommerce.DTOs.Product;
+using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,11 @@ namespace Ecommerce.Application.Services
         public CreateProductDTO UpdateProduct(CreateProductDTO updateprodct);
         public void DeleteProduct(DeleteProductDTO deleteproduct);
         public List<GetAllProductDTO> GetAllProudctPagination(int count, int pagenumber);
-        public List<GetAllProductDTO> SearchProduct(string productname);
+        public List<Product> GetAllProudcts();
+        public List<GetAllProductDTO> FilterByCategory(string CategoryName, int Count, int PageNumber);
+       // public ProductDetailsDTO GetProductDetails(GetAllProductsDTO Product);
+
+        public List<GetAllProductDTO> SearchProduct(string productname,int count, int pageNum);
 
     }
 }

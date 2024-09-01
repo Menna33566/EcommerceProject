@@ -10,5 +10,6 @@ namespace Ecommerce.Application.Contracts
     public interface IProductRepository : IGenaricRepository<Product>
     {
         public IQueryable<Product> Search(string keyword);
+        public List<Product> GetAllProudcts();
     }
 }

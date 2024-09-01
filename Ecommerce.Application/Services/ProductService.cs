@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Ecommerce.Application.Services
 {
     public class ProductService : IProductService
@@ -29,6 +30,9 @@ namespace Ecommerce.Application.Services
             }
             return null;
         }
+
+
+
         public CreateProductDTO UpdateProduct(CreateProductDTO updateprodct)
         {
             Product product = mapper.Map<Product>(updateprodct);
@@ -62,7 +66,28 @@ namespace Ecommerce.Application.Services
                 }).ToList();
             return productlist;
         }
-        public List<GetAllProductDTO> SearchProduct(string productname)
+        //public ProductDetailsDTO GetProductDetails(GetAllProductsDTO Product)
+        //{
+        //    var p = (productRepository.GetAllProudcts(Product.Id));
+        //    var selectedProduct = new ProductDetailsDTO
+        //    {
+        //        Id = p.ProductID,
+        //        Name = p.Name,
+        //        Price = p.Price,
+        //        ImageURL = p.ImageURL,
+        //        Category = p.Category,
+        //        UnitsInStock = p.UnitsInStock,
+        //        Discount = p.Discount,
+        //    };
+        //    return selectedProduct;
+        //}
+
+        public List<Product> GetAllProudcts()
+        {
+            return productRepository.GetAllProudcts();
+
+        }
+        public List<GetAllProductDTO> SearchProduct(string productname, int count, int pageNum)
         {
             var searchlst = productRepository.Search(productname).Select(c => new GetAllProductDTO
             {
@@ -76,5 +101,20 @@ namespace Ecommerce.Application.Services
             }).ToList();
             return searchlst;
         }
+
+        public List<GetAllProductDTO> FilterByCategory(string CategoryName, int Count, int PageNumber)
+        {
+            var ProductsPages = productRepository.GetAllProudcts().Skip(Count * (PageNumber - 1)).Take(Count).Where(b => b.category.CategoryName == CategoryName)
+                .Select(b => new GetAllProductDTO
+                {
+                    Id = b.Id,
+                    ProductName = b.ProductName,
+                    ImageURL = b.ImageURL,
+                    Price = b.Price,
+                }).ToList();
+           // productRepository.SaveChanges();
+            return ProductsPages;
+        }
+
     }
 }

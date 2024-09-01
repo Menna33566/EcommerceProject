@@ -43,6 +43,11 @@ namespace Ecommerce.Inftastructure
             Product prdt = context.Products.Where(c => c.Id == entity.Id).First();
             return prdt;
         }
+
+       public List<Product> GetAllProudcts()
+        {
+            return context.Products.ToList();
+        }
         //        CREATE PROCEDURE UpdateProduct
         //    @Id INT,
         //    @ProductName NVARCHAR(100),
