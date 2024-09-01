@@ -20,5 +20,6 @@ namespace Ecommerce.Application.Contracts
         public bool LoginCheck(string password,string email);
         public string NameofAdmin();
 
+        User GetActiveUser();
     }
 }

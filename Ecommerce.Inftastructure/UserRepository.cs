@@ -66,7 +66,7 @@ namespace Ecommerce.Inftastructure
                     .FirstOrDefault();
 
                 if (user != null)
-                {
+        {
                     user.IsActive = true;
                     context.SaveChanges();
                 }
@@ -91,6 +91,11 @@ namespace Ecommerce.Inftastructure
         {
             var user =context.Users.Where(p=>p.IsActive==true).Select(p=>p.UserName).ToList();
             return user[0];
+        }
+        // implement it
+        public User GetActiveUser()
+        {
+            throw new NotImplementedException();
         }
     }
 }

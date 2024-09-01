@@ -26,5 +26,8 @@ namespace Ecommerce.Models
         /////
         /// sadasdasdasd
         ///
+
+        //Nourhan Added
+        public ICollection<Order>? Orders { get; set; }
     }
 }

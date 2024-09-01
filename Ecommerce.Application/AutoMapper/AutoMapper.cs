@@ -25,6 +25,7 @@ namespace Ecommerce.Application.AutoMapper
             CreateMap<GetAllProductDTO, Product>().ReverseMap();
             //Order
             CreateMap<Order, OrderDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

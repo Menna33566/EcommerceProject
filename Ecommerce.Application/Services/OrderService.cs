@@ -1,4 +1,5 @@
-﻿using Ecommerce.Application.Contracts;
+﻿using AutoMapper;
+using Ecommerce.Application.Contracts;
 using Ecommerce.DTOs.Order;
 using Ecommerce.Models;
 using System;
@@ -13,70 +14,47 @@ namespace Ecommerce.Application.Services
     public class OrderService : IOrderService
     {
         private readonly IOrderRepository _orderRepository;
+        private readonly IMapper _mapper;
 
-        public OrderService(IOrderRepository orderRepository)
+        public OrderService(IOrderRepository orderRepository, IMapper mapper)
         {
             _orderRepository = orderRepository;
+            _mapper = mapper;
         }
 
-        public OrderDto GetOrderById(int orderId)
+        public IEnumerable<OrderDto> GetOrdersByUserAndStatus(int userId, string status)
         {
-            var order = _orderRepository.GetById(orderId);
-            if (order == null)
-                throw new KeyNotFoundException("Order not found.");
-
-            return new OrderDto
-            {
-                OrderId = order.OrderId,
-                OrderDate = order.OrderDate,
-                UserId = order.UserId,
-                ProductId = order.ProductId,
-                Quantity = order.Quantity,
-                Status = order.Status
-            };
-        }
-
-        public IEnumerable<OrderDto> GetAllOrders()
-        {
-            var orders = _orderRepository.GetAllOrders();
-            return orders.Select(o => new OrderDto
-            {
-                OrderId = o.OrderId,
-                OrderDate = o.OrderDate,
-                UserId = o.UserId,
-                ProductId = o.ProductId,
-                Quantity = o.Quantity,
-                Status = o.Status
-            });
-        }
-
-        public void CreateOrder(OrderDto orderDto)
-        {
-            var order = new Order
-            {
-                OrderDate = orderDto.OrderDate,
-                UserId = orderDto.UserId,
-                ProductId = orderDto.ProductId,
-                Quantity = orderDto.Quantity,
-                Status = orderDto.Status
-            };
-
-            _orderRepository.Add(order);
+            var orders = _orderRepository.GetOrdersByUserAndStatus(userId, status);
+            return _mapper.Map<IEnumerable<OrderDto>>(orders);
         }
 
         public void UpdateOrderStatus(int orderId, string status)
         {
-            var order = _orderRepository.GetById(orderId);
-            if (order == null)
-                throw new KeyNotFoundException("Order not found.");
+            _orderRepository.UpdateStatus(orderId, status);
+        }
 
-            order.Status = status;
-            _orderRepository.Update(order);
+        public void UpdateOrderQuantity(int orderId, int quantity)
+        {
+            _orderRepository.UpdateQuantity(orderId, quantity);
         }
 
         public void DeleteOrder(int orderId)
         {
-            _orderRepository.Delete(orderId);
+            var order = _orderRepository.GetById(orderId);
+            if (order != null)
+            {
+                _orderRepository.Delete(order);
+            }
+        }
+
+        public List<ordersPending> getAllPendingOrders(int user_id, string stat)
+        {
+            return _orderRepository.GetAllPending(user_id, stat);
+        }
+
+        void IOrderService.CreateOrder(OrderDto orderDto)
+        {
+            throw new NotImplementedException();
         }
 
         public void savechanges()
@@ -89,4 +67,5 @@ namespace Ecommerce.Application.Services
             return _orderRepository.GetAllLocal();
         }
     }
+
 }

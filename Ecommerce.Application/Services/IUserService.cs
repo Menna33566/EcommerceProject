@@ -1,4 +1,5 @@
 ﻿using Ecommerce.DTOs.User;
+using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +20,8 @@ namespace Ecommerce.Application.Services
         public int CheckUserType(string email, string password);
         public string AdminName();
         public void savechanges();
+
+        //Nourhan added
+        UserDto GetActiveUser();
     }
 }

@@ -1,4 +1,5 @@
-﻿using Ecommerce.Application.Contracts;
+﻿using AutoMapper;
+using Ecommerce.Application.Contracts;
 using Ecommerce.DTOs.User;
 using Ecommerce.Models;
 using System;
@@ -14,11 +15,13 @@ namespace Ecommerce.Application.Services
     {
         private readonly IUserRepository _userRepository;
         private readonly IUserTypeRepository _userTypeRepository;
-
-        public UserService(IUserRepository userRepository, IUserTypeRepository userTypeRepository)
+        //Nourhan added
+        private readonly IMapper _mapper;
+        public UserService(IUserRepository userRepository, /*IUserTypeRepository userTypeRepository,*/ IMapper mapper)
         {
+            _mapper = mapper;
             _userRepository = userRepository;
-            _userTypeRepository = userTypeRepository;
+           // _userTypeRepository = userTypeRepository;
         }
 
         public UserDto AddUser(UserDto userDto)
@@ -165,5 +168,16 @@ namespace Ecommerce.Application.Services
         {
             return _userRepository.NameofAdmin();
         }
+
+        //Nourhan added
+       
+        public UserDto GetActiveUser()
+        {
+            var activeUser = _userRepository.GetActiveUser();
+
+            // Map User entity to UserDto using AutoMapper
+            return _mapper.Map<UserDto>(activeUser);
+        }
+
     }
 }
