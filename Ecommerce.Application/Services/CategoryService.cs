@@ -4,6 +4,7 @@ using Ecommerce.DTOs.Category;
 using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -59,5 +60,14 @@ namespace Ecommerce.Application.Services
             return categorydto;
         }
 
+        public void savechanges()
+        {
+            categoryRepository.Save();
+        }
+
+        public BindingList<Category> GetAllCategoryBinding()
+        {
+            return categoryRepository.GetAllLocal();
+        }
     }
 }

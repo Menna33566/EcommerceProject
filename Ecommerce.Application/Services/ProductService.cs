@@ -4,6 +4,7 @@ using Ecommerce.DTOs.Product;
 using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -114,6 +115,16 @@ namespace Ecommerce.Application.Services
                 }).ToList();
            // productRepository.SaveChanges();
             return ProductsPages;
+        }
+
+        public void savechanges()
+        {
+            productRepository.Save();
+        }
+
+        public BindingList<Product> GetAllProductBinding()
+        {
+            return productRepository.GetAllLocal();
         }
 
     }

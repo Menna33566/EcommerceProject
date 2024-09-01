@@ -4,6 +4,7 @@ using Ecommerce.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,12 +20,15 @@ namespace Ecommerce.Inftastructure
         }
         public Product Add(Product entity)
         {
-            return context.Products.Add(entity).Entity;
+                Product prd= context.Products.Add(entity).Entity;
+            context.SaveChanges();
+            return prd;
         }
 
         public void Delete(Product entity)
         {
             context.Products.Remove(entity);
+            context.SaveChanges();
         }
 
         public IQueryable<Product> GetAll()
@@ -36,11 +40,15 @@ namespace Ecommerce.Inftastructure
         {
             return context.Products.FromSql($"SELECT * FROM Products WHERE ProductName LIKE {keyword}");
         }
-
+        public void Save()
+        {
+            context.SaveChanges();
+        }
         public Product Update(Product entity)
         {
             context.Products.FromSql($"EXEC UpdateProduct \n    @Id = {entity.Id},\n    @ProductName = {entity.ProductName},\n    @Price = {entity.Price},\n    @ImageURL ={entity.ImageURL},\n    @Quantity ={entity.Quantity},\n    @ProductDescription ={entity.ProductDescription},\n    @CategoryId ={entity.CategoryId}");
             Product prdt = context.Products.Where(c => c.Id == entity.Id).First();
+            context.SaveChanges();
             return prdt;
         }
 
@@ -68,5 +76,12 @@ namespace Ecommerce.Inftastructure
         //        CategoryId = @CategoryId
         //    WHERE Id = @Id;
         //END
+
+
+        public BindingList<Product> GetAllLocal()
+        {
+            context.Products.Load();
+            return context.Products.Local.ToBindingList();
+        }
     }
 }

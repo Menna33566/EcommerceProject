@@ -11,5 +11,7 @@ namespace Ecommerce.Application.Contracts
     {
         UserType GetById(int userTypeId);
         IEnumerable<UserType> GetAll();
+        public void Save();
+
     }
 }

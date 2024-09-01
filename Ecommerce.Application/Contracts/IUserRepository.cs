@@ -14,5 +14,11 @@ namespace Ecommerce.Application.Contracts
         void Update(User user);
         void Delete(int userId);
         IEnumerable<User> GetAll();
+        public void Save();
+        public void ChangeActiv();
+        public int checkType(string password, string email);
+        public bool LoginCheck(string password,string email);
+        public string NameofAdmin();
+
     }
 }

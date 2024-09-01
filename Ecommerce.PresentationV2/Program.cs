@@ -13,6 +13,8 @@ namespace Ecommerce.PresentationV2
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             System.Windows.Forms.Application.Run(new ShowProduct());
+            System.Windows.Forms.Application.Run(new LoginForm());
+            //System.Windows.Forms.Application.Run(new AdminDashBord());
         }
     }
 }

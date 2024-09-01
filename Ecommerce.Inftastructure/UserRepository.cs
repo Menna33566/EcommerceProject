@@ -20,6 +20,8 @@ namespace Ecommerce.Inftastructure
         public void Add(User user)
         {
             context.Users.Add(user);
+            context.SaveChanges();
+
         }
 
         public void Delete(int userId)
@@ -27,6 +29,7 @@ namespace Ecommerce.Inftastructure
             User user;
             user = GetById(userId);
             context.Users.Remove(user);
+            context.SaveChanges();
         }
 
         public IEnumerable<User> GetAll()
@@ -42,10 +45,52 @@ namespace Ecommerce.Inftastructure
         public void Update(User user)
         {
             context.Users.FromSql($"EXEC UpdateUser \n    @Id = {user.Id},\n    @UserName = {user.UserName},\n    @Email = {user.Email},\n    @Password = {user.Password},\n    @Address = {user.Address},\n    @UserTypeId = {user.UserType},\n    @IsActive = {user.IsActive}");
+            context.SaveChanges();
         }
         public void Save()
         {
             context.SaveChanges();
+        }
+
+        public void ChangeActiv()
+        {
+            context.Database.ExecuteSql($"UPDATE Users SET IsActive=0");
+        }
+
+        public bool LoginCheck(string password, string email)
+        {
+            if(context.Users.Any(u=>u.Email==email&& u.Password == password))
+            {
+                var user = context.Users
+                    .Where(u => u.Email == email && u.Password == password)
+                    .FirstOrDefault();
+
+                if (user != null)
+                {
+                    user.IsActive = true;
+                    context.SaveChanges();
+                }
+                return true;
+            }
+            return false;
+        }
+
+        public int checkType(string password, string email)
+        {
+            var user = context.Users
+                    .Where(u => u.Email == email && u.Password == password)
+                    .Select(p=>p.UserTypeId).ToList();
+            //if (user != null)
+            //{
+            //    return user.UserType.Id;
+            //}
+            return user[0];
+        }
+
+        public string NameofAdmin()
+        {
+            var user =context.Users.Where(p=>p.IsActive==true).Select(p=>p.UserName).ToList();
+            return user[0];
         }
     }
 }

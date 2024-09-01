@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Ecommerce.Application.Services
@@ -50,6 +51,23 @@ namespace Ecommerce.Application.Services
                 UserTypeId = user.UserTypeId,
                 IsActive = user.IsActive
             };
+        }
+
+        public void changeuserActive()
+        {
+            _userRepository.ChangeActiv();
+        }
+        string emailPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+        public bool CheckLogin(string email, string password)
+        {
+            if (Regex.IsMatch(email, emailPattern)&&password.Length>=6)
+            {
+                if (_userRepository.LoginCheck(password.Trim(), email.Trim()))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         public void DeleteUser(int userId)
@@ -98,6 +116,11 @@ namespace Ecommerce.Application.Services
             };
         }
 
+        public void savechanges()
+        {
+            _userRepository.Save();
+        }
+
         public UserDto UpdateUser(UserDto userDto)
         {
             var user = _userRepository.GetById(userDto.Id);
@@ -131,6 +154,16 @@ namespace Ecommerce.Application.Services
                 UserTypeId = user.UserTypeId,
                 IsActive = user.IsActive
             };
+        }
+
+        public int CheckUserType(string email, string password)
+        {
+            return _userRepository.checkType(password,email);
+        }
+
+        public string AdminName()
+        {
+            return _userRepository.NameofAdmin();
         }
     }
 }

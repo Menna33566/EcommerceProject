@@ -14,5 +14,10 @@ namespace Ecommerce.Application.Services
         UserDto GetUserById(int userId);
         IQueryable<UserDto> GetAllUsers();
         void DeleteUser(int userId);
+        public void changeuserActive();
+        public bool CheckLogin(string email, string password);
+        public int CheckUserType(string email, string password);
+        public string AdminName();
+        public void savechanges();
     }
 }
