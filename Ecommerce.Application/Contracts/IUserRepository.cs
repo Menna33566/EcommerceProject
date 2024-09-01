@@ -14,5 +14,6 @@ namespace Ecommerce.Application.Contracts
         void Update(User user);
         void Delete(int userId);
         IEnumerable<User> GetAll();
+        User GetActiveUser();
     }
 }

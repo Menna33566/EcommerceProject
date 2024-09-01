@@ -13,7 +13,7 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Ecommerce.Application.AutoMapper
 {
-    internal class AutoMapperProfile : Profile
+    public class AutoMapperProfile : Profile
     {
         public AutoMapperProfile()
         {
@@ -25,6 +25,7 @@ namespace Ecommerce.Application.AutoMapper
             CreateMap<GetAllProductDTO, Product>().ReverseMap();
             //Order
             CreateMap<Order, OrderDto>().ReverseMap();
+            CreateMap<User, UserDto>().ReverseMap();
         }
     }
 }

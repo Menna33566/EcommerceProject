@@ -23,6 +23,6 @@ namespace Ecommerce.Models
         public UserType UserType { get; set; }
 
         //Nourhan Added
-        public ICollection<Order> Orders { get; set; } = new List<Order>();
+        public ICollection<Order>? Orders { get; set; }
     }
 }

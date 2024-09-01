@@ -1,4 +1,5 @@
 ﻿using Ecommerce.DTOs.User;
+using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,5 +15,8 @@ namespace Ecommerce.Application.Services
         UserDto GetUserById(int userId);
         IQueryable<UserDto> GetAllUsers();
         void DeleteUser(int userId);
+
+        //Nourhan added
+        UserDto GetActiveUser();
     }
 }

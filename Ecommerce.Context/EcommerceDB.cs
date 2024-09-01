@@ -13,7 +13,7 @@ namespace Ecommerce.Context
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=.;initial Catalog=EcommerceDB;Integrated Security=true;encrypt=false;");
+            optionsBuilder.UseSqlServer("Data Source=DESKTOP-0SHEK7G;initial Catalog=EcommerceDB;Integrated Security=true;encrypt=false;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
