@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Ecommerce.Models;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Ecommerce.Application.Contracts
 {
@@ -14,5 +15,8 @@ namespace Ecommerce.Application.Contracts
         void Add(Order order);
         void Update(Order order);
         void Delete(int orderId);
+        public void Save();
+        public BindingList<Order> GetAllLocal();
+
     }
 }

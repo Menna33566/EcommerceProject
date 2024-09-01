@@ -4,6 +4,7 @@ using Ecommerce.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 using System.Text;
@@ -22,12 +23,16 @@ namespace Ecommerce.Inftastructure
         }
         public Category Add(Category entity)
         {
-            return context.Categories.Add(entity).Entity;
+               Category cat= context.Categories.Add(entity).Entity;
+            context.SaveChanges();
+            return cat;
+
         }
 
         public void Delete(Category entity)
         {
             context.Categories.Remove(entity);
+            context.SaveChanges();
         }
         //CREATE PROCEDURE DeleteCategory
         //    @Id INT
@@ -41,20 +46,33 @@ namespace Ecommerce.Inftastructure
             return context.Categories;
         }
 
+        public void Save()
+        {
+            context.SaveChanges();
+        }
+
         public Category Update(Category entity)
         {
             context.Categories.FromSql($"EXEC UpdateCategory @Id = {entity.Id}, @CategoryName = {entity.CategoryName}");
             Category cat = context.Categories.Where(c => c.Id == entity.Id).First();
+            context.SaveChanges();
             return cat;
         }
-        //        CREATE PROCEDURE UpdateCategory
-        //    @Id INT,
-        //    @CategoryName NVARCHAR(100)
-        //AS
-        //BEGIN
-        //    UPDATE[YourTableName]
-        //    SET CategoryName = @CategoryName
-        //    WHERE Id = @Id;
-        //END
+    //    CREATE PROCEDURE UpdateCategory
+    //@Id INT,
+    //        @CategoryName NVARCHAR(100)
+    //    AS
+    //    BEGIN
+    //        UPDATE[YourTableName]
+    //        SET CategoryName = @CategoryName
+    //        WHERE Id = @Id;
+    //    END
+
+
+        public BindingList<Category> GetAllLocal()
+        {
+            context.Categories.Load();
+            return context.Categories.Local.ToBindingList();
+        }
     }
 }

@@ -3,6 +3,7 @@ using Ecommerce.DTOs.Order;
 using Ecommerce.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -76,6 +77,16 @@ namespace Ecommerce.Application.Services
         public void DeleteOrder(int orderId)
         {
             _orderRepository.Delete(orderId);
+        }
+
+        public void savechanges()
+        {
+            _orderRepository.Save();
+        }
+
+        public BindingList<Order> GetAllOrderBinding()
+        {
+            return _orderRepository.GetAllLocal();
         }
     }
 }

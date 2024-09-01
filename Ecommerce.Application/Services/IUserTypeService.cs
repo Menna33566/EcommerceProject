@@ -8,5 +8,6 @@ namespace Ecommerce.Application.Services
 {
     public interface IUserTypeService
     {
+        //public void savechanges();
     }
 }

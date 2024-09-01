@@ -8,5 +8,9 @@ namespace Ecommerce.Application.Services
 {
     public class UserTypeService : IUserTypeService
     {
+        //public void savechanges()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

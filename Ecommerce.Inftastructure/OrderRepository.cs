@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,6 +57,15 @@ namespace Ecommerce.Inftastructure
                 _context.Orders.Remove(order);
                 _context.SaveChanges();
             }
+        }
+        public void Save()
+        {
+            _context.SaveChanges();
+        }
+        public BindingList<Order> GetAllLocal()
+        {
+            _context.Orders.Load();
+            return _context.Orders.Local.ToBindingList();
         }
     }
 }
