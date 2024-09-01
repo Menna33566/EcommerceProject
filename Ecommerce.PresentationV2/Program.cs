@@ -1,3 +1,10 @@
+using AutoMapper;
+using Ecommerce.Application.Contracts;
+using Ecommerce.Application.Services;
+using Ecommerce.Application.AutoMapper;
+using Ecommerce.Context;
+using Ecommerce.Inftastructure;
+using System;
 
 namespace Ecommerce.PresentationV2
 {
